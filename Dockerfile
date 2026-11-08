@@ -12,7 +12,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 COPY requirements-deploy.txt /code/requirements.txt
 RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
-# Create a non-root user required by Hugging Face security rules
+# Run the application as a non-root user
 RUN useradd -m -u 1000 user
 USER user
 ENV HOME=/home/user \
@@ -23,8 +23,7 @@ WORKDIR $HOME/app
 # Copy the rest of the application code with proper permissions
 COPY --chown=user . $HOME/app
 
-# Hugging Face Spaces exposes port 7860 by default
-EXPOSE 7860
+EXPOSE 8000
 
 # Start the FastAPI server via Uvicorn
-CMD ["uvicorn", "web_app:app", "--host", "0.0.0.0", "--port", "7860"]
+CMD ["uvicorn", "web_app:app", "--host", "0.0.0.0", "--port", "8000"]

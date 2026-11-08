@@ -2,6 +2,7 @@
 .env
 .env.*
 !.env.example
+.venv311
 
 # Python
 __pycache__/
@@ -25,8 +26,3 @@ Thumbs.db
 .idea/
 .vscode/
 
-# Local runtime data and databases
-databases/
-data/
-vector_db/
-knowledge_base/
