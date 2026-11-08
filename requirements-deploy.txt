@@ -1,0 +1,10 @@
+# Minimal runtime dependencies for deploying the Aabvita web app (FastAPI + OpenRouter + ChromaDB).
+# Intentionally excludes heavy ML/dev packages from requirements.txt (torch, transformers, etc.)
+# that are not required for the OpenRouter-based runtime path.
+
+fastapi>=0.110,<1.0
+uvicorn[standard]>=0.27,<1.0
+pydantic>=2.0,<3.0
+openai>=1.0,<3.0
+chromadb>=0.5,<2.0
+python-dotenv>=1.0,<2.0
